@@ -1,25 +1,49 @@
 {
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "warning"
+  },
   "inbounds": [
-  {
-    "port": 80,
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
-        {
-          "id": "aa12098f-56f3-49ed-bd5d-267f3ce2e873",       
-          "alterId": 64
+    {
+      "port": 2052,
+      "protocol": "vmess",
+      "settings": {
+        "udp": false,
+        "clients": [
+          {
+            "id": "cec08a9b-174f-46f7-87ce-078b8086f755",
+            "alterId": 0,
+            "email": "t@t.tt",
+            "flow": ""
+          }
+        ],
+        "decryption": "none",
+        "allowTransparent": false
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/",
+          "headers": {
+            "Host": "mahdim.ganug.ml"
+          }
         }
-      ]
-    },
-    "streamSettings": {
-      "network": "ws"
+      }
     }
-  }
   ],
   "outbounds": [
-  {
-    "protocol": "freedom",
-    "settings": {}
+    {
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "rules": []
   }
-  ]
 }
